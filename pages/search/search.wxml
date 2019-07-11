@@ -1,0 +1,44 @@
+<headerNavbar navbar-data="{{nvabarData}}"></headerNavbar>
+<view class="root">
+  <view class="search-input" bindtap="searchFocus">
+    <input placeholder="今天你想做点什么？" focus="{{searchFocus}}" confirm-type="search" bindconfirm="searchConfirm" bindfocus="bindfocus" bindblur="bindblur" bindinput="searchInput"  value="{{searchData}}"/>
+    <icon wx:if="{{searchData.length > 0 && searchFocus}}" type="clear" size="14" bindtap='clearSearch'/>
+    <view class="cancel" wx:if="{{searchStatus === 0}}" catchtap="cancelSearch">取消</view>
+    
+  </view>
+  <!-- 搜索页 -->
+  <scroll-view class="search-content">
+    <view class="search" wx:if="{{searchStatus === 0}}">
+      <view class="history">
+        <view class="title">
+          <text class="text">搜索历史</text>
+          <text class="clear">清空</text>
+        </view>
+        <view class="content">
+          <view class="item" wx:for="{{searchHistoryData}}">{{item}}</view>
+        </view>
+      </view>
+      <view class="history">
+        <view class="title">
+          <text class="text">热门搜索</text>
+        </view>
+        <view class="content">
+          <view class="item" wx:for="{{searchHistoryData}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 搜索结果展示 -->
+    <view class="result" wx:else>
+      <view class="items">
+        <navigator url="/pages/detail/detail" class="item" wx:for="{{resultData}}">
+          <image src="https://hbimg.huabanimg.com/2cde37cfa62476b0153a13e1e6f46cc1273abe3b363e-inUTvh_fw658"></image>
+          <view class="detail">
+            <text class="title">{{item.title}}</text>
+            <text class="desc">{{item.desc}}</text>
+            <text class="watch">{{item.watch}}次阅读</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </scroll-view>
+</view>

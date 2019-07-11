@@ -1,0 +1,110 @@
+.root .search-input {
+  position: fixed;
+  display: flex;
+  width: 670rpx;
+  z-index: 9999999;
+  border-bottom: 1px solid #f4f4f4;
+  background-color: white;
+  padding:40rpx;
+  /* border: 1px solid red; */
+}
+.root .search-input input {
+  flex: 1;
+  /* border: 1px solid red;/ */
+}
+
+.root .search-input  icon {
+  z-index: 9999999;
+  /* width: 150rpx; */
+  background-color: white;
+  text-align:center;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.root .search-input .cancel {
+  text-align: center;
+  font-size: 25rpx;
+  color: red;
+  width: 80rpx;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.root .search-content .search {
+  margin:140rpx 40rpx;
+}
+
+.root .search-content .search .history {
+  margin-top:50rpx;
+}
+
+.root .search-content .search .history .title {
+  font-size: 25rpx;
+}
+
+.root .search-content .search .history  .title .clear {
+  float: right;
+}
+
+.root .search-content .search .history .content {
+  margin:0 -30rpx;
+}
+
+.root .search-content .search .history .content .item {
+  display: inline-block;
+  background-color: #f8f8f8;
+  margin: 10rpx 20rpx;
+  font-size:30rpx;
+  padding:10rpx 30rpx;
+}
+
+.root .search-content .result {
+  margin-top:120rpx;
+}
+
+.root .search-content .result .items .item {
+  padding: 40rpx 40rpx;
+}
+.root .search-content .result .items .item image {
+  width: 250rpx;
+  height: 200rpx;
+  float: left;
+}
+
+.root .search-content .result .items .item .detail {
+  height: 200rpx;
+  margin-left: 280rpx;
+}
+
+.root .search-content .result .items .item .detail text {
+  display: block;
+  /* 超出一行文字自动隐藏 */
+  overflow:hidden;
+  /* 文字隐藏后添加省略号 */
+  text-overflow:ellipsis;
+  /* 强制不换行 */
+  white-space:nowrap;
+}
+
+.root .search-content .result .items .item .detail .title {
+  height: 100rpx;
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: 600;
+  line-height: 100rpx
+}
+.root .search-content .result .items .item .detail .desc {
+  height: 50rpx;
+  font-size: 25rpx;
+  line-height: 50rpx
+}
+.root .search-content .result .items .item .detail .watch {
+  height: 50rpx;
+  font-size: 20rpx;
+  line-height: 50rpx
+}

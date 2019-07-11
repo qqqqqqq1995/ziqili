@@ -1,0 +1,11 @@
+<view class="list-container">
+  <view class="list-side-box" wx:for="{{renderList}}" wx:key="{{index}}">
+    <template is="list-item" data="{{cardList: item, rawData: rawData}}"></template>
+  </view>
+</view>
+<template name="list-item">
+  <view class="list-item" wx:for="{{cardList}}" wx:key="{{index}}" id="card-{{item}}" data-card-id="{{item}}" bindtap="cardItemTap">
+    <image mode="widthFix" src="{{rawData[item].coverUrl}}" lazy-load data-card-id="{{item}}" onload="onload"></image>
+    <text>{{rawData[item].title}}</text>
+  </view>
+</template>

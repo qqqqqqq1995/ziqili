@@ -1,0 +1,22 @@
+/* pages/test/test.wxss */
+.root {
+  border: 1px solid red;
+  padding: 40rpx 20rpx;
+}
+.search{
+  display: flex;
+  border: 1px solid red;
+}
+input{
+  border: 1px solid black;
+  flex: 1;
+}
+.cancel {
+  border: 1px solid black;
+  text-align:center;
+
+}
+
+icon {
+  width: 100rpx;
+}

@@ -1,0 +1,53 @@
+/* pages/detail/detail.wxss */
+.root .video {
+  text-align: center;
+}
+.root .introduction {
+  margin: 20rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+.root .introduction .title{
+  text-align: center;
+  display: block;
+  height: 150rpx;
+  line-height: 150rpx;
+  font-size: 50rpx;
+  /* 超出一行文字自动隐藏 */
+  overflow:hidden;
+  /* 文字隐藏后添加省略号 */
+  text-overflow:ellipsis;
+  /* 强制不换行 */
+  white-space:nowrap;
+}
+
+.root .material .items {
+  padding: 0 20rpx;
+  border-bottom: 1px solid #f4f4f4;
+}
+.root .material .items .title {
+  display: block;
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: 600;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.root .material .items .item {
+  border-top: 1px solid #f4f4f4;
+}
+
+.root .material .items .item text {
+  display: block;
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.root .material .items .item .key {
+  float: left;
+}
+
+.root .material .items .item .value {
+  margin-left: 450rpx; 
+}

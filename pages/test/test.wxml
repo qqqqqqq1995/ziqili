@@ -1,0 +1,10 @@
+<!--pages/test/test.wxml-->
+<view class="root">
+<view class="search">
+  <input placeholder="今天你想做点什么？" confirm-type="search"/>
+  <icon type="clear" size="14" wx:if="{{showClear}}"/>
+  <view class="cancel" catchtap="cancelSearch">取消</view>
+</view>
+</view>
+
+
