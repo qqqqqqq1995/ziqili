@@ -10,17 +10,13 @@ Component({
       type: Array,
       value: [],
       observer: function (newVal, oldVal) {
-        const rawData = {};
-        const orderArr = [];
-        newVal.forEach(item => {
-          orderArr.push(item.id);
-          rawData[item.id] = item;
-        })
+        if (newVal.length === 0){
+          return
+        }
         this.setData({
-          rawData,
-          orderArr
-          // renderList/
-        }, this._getRenderList.bind(this, true))
+          cacheData: newVal
+        })
+        this._setData()
       }
     }
   },
@@ -30,9 +26,13 @@ Component({
    */
   data: {
     // 分组数据
-    renderList: [],
+    renderList: [[], []],
+    // 数据源
     rawData: {},
-    orderArr: []
+    // 缓存数据
+    cacheData: [],
+    // 高度数组
+    heightArr: [0, 0]
   },
 
   /**
@@ -89,12 +89,59 @@ Component({
       const card_id = e.currentTarget.dataset.cardId
       this.triggerEvent('cardItemTap', { card_id })
     },
-    onload: function(e){
-      const card_id = e.currentTarget.dataset.cardId
-      wx.createSelectorQuery().in(this).select('#card-' + card_id).boundingClientRect(function (rect) {
-        // 节点的高度
-        console.log(rect)
-      }).exec()
+    // 图片加载完成方法
+    _coverOnload: function(e){
+      const { rawData } = this.data
+      const id = e.currentTarget.dataset.id
+      //设置元素为显示
+      rawData[id]['show'] = true
+      this.setData({
+        rawData
+      })
+      this._setNextCard(id)
+    },
+    // 获取卡片宽度
+    _getCardWidht: function (id){
+      return new Promise((resolve, reject) => {
+        wx.createSelectorQuery().in(this).select('#card-' + id).boundingClientRect(function (rect) {
+          // 节点的高度
+          console.log(rect)
+          resolve({ height: rect.height })
+        }).exec()
+      })
+    },
+    // 设置下一张卡片
+    _setNextCard: function (id){
+      const { heightArr, rawData } = this.data
+      // 添加上一张卡片宽度到data
+      const heightPromise = this._getCardWidht(id)
+      heightPromise.then(res => {
+        // 获取到上一张卡片的宽度
+        const height = res.height
+        heightArr[rawData[id]._renderIndex] += height
+        this._setData()
+      })
+      
+
+    },
+    // 放入一个数据
+    _setData: function (){
+      const { heightArr, renderList, cacheData, rawData } = this.data
+      if(cacheData.length === 0){
+        return
+      }
+      // 获取render数据索引
+      const renderIndex = heightArr.indexOf(Math.min.apply(null, heightArr))
+      // 获取到新数据先放进去一个
+      const data = cacheData.shift()
+      renderList[renderIndex].push(data.id)
+      data._show = false
+      data._renderIndex = renderIndex
+      rawData[data.id] = data
+      this.setData({
+        renderList,
+        rawData
+      })
     }
   }
 })

@@ -4,8 +4,8 @@
   </view>
 </view>
 <template name="list-item">
-  <view class="list-item" wx:for="{{cardList}}" wx:key="{{index}}" id="card-{{item}}" data-card-id="{{item}}" bindtap="cardItemTap">
-    <image mode="widthFix" src="{{rawData[item].coverUrl}}" lazy-load data-card-id="{{item}}" onload="onload"></image>
+  <view class="list-item" wx:for="{{cardList}}" wx:key="{{index}}" id="card-{{item}}" style="{{rawData[item].show || 'display: none'}}" data-card-id="{{item}}" bindtap="cardItemTap">
+    <image mode="widthFix" src="{{rawData[item].coverUrl}}" lazy-load data-id="{{item}}" onload="_coverOnload"></image>
     <text>{{rawData[item].title}}</text>
   </view>
 </template>

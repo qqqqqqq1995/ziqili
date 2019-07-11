@@ -63,9 +63,8 @@ Page({
         title: "哈".repeat(index) + id
       })
     }
-    cardData = cardData.concat(tmpArr)
     this.setData({
-      cardData,
+      cardData: tmpArr,
       page: page + 1
     })
     // console.log(this.data);
