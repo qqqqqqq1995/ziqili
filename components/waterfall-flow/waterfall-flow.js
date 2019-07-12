@@ -1,6 +1,3 @@
-
-// 瀑布流列数
-const _colunms = 2;
 Component({
   /**
    * 组件的属性列表
@@ -105,7 +102,7 @@ Component({
       return new Promise((resolve, reject) => {
         wx.createSelectorQuery().in(this).select('#card-' + id).boundingClientRect(function (rect) {
           // 节点的高度
-          console.log(rect)
+          // console.log(rect)
           resolve({ height: rect.height })
         }).exec()
       })
@@ -128,6 +125,7 @@ Component({
     _setData: function (){
       const { heightArr, renderList, cacheData, rawData } = this.data
       if(cacheData.length === 0){
+        this.triggerEvent('changeReachBottom')
         return
       }
       // 获取render数据索引

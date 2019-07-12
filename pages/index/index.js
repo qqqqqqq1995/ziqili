@@ -1,15 +1,16 @@
-const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    // 卡片数据
+    // 卡片当前页数据
     cardData: [],
     // 当前页数
     page: 1,
     // 每页返回数据数
     size: 20,
+    // 是否可下拉加载
+    reachBottom: false,
   },
 
   /**
@@ -20,8 +21,18 @@ Page({
   },
   // 滑动到底部加载
   onReachBottom: function (){
-    this.getData();
+    const { reachBottom } = this.data
+    if (!reachBottom){
+      return
+    }
+    this.getData()
+    this.changeReachBottom()
   },
+  changeReachBottom: function (){
+    const { reachBottom } = this.data
+    this.data.reachBottom = !reachBottom
+  },
+  // 获取数据方法
   getData: function (){
     var imgs = [
       'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1409185525,4059560780&fm=26&gp=0.jpg',

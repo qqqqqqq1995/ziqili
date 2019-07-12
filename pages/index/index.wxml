@@ -2,4 +2,4 @@
   <navigator url="/pages/search/search" class="search-input">
     <text>今天你想干点什么?</text>
   </navigator>
-  <waterfall-flow bind:cardItemTap="cardItemTap" dataList="{{cardData}}"></waterfall-flow>
+  <waterfall-flow bind:cardItemTap="cardItemTap" bind:changeReachBottom="changeReachBottom" dataList="{{cardData}}"></waterfall-flow>

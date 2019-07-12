@@ -9,10 +9,11 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.3",
+	"libVersion": "2.7.4",
 	"appid": "wx09aa8edaf1618e94",
 	"projectname": "ziqili",
 	"debugOptions": {
